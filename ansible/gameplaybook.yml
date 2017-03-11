@@ -1,7 +1,6 @@
 ---
 - hosts: tomcatservers
   become: yes
-  gather_facts: False
 
   tasks:
 
@@ -15,10 +14,11 @@
   - name: Install tomcat
     yum: name=tomcat state=present
 
-  - name: Download latest gameoflife file
-    get_url: url=http://54.201.173.200:9090/nexus/content/repositories/game/{{group_id}}/{{time}}/{{build}}/{{gol_version}} dest=/tmp/ mode=755
 
-  - name: stop tomcat service
+  - name: Download latest gameoflife.war file
+    get_url: url=http://54.201.173.200:9090/nexus/content/repositories/GOL_PROJ1/Dev/{{time}}/{{build}}/{{gol_version}} dest=/tmp/ mode=755
+
+  - name: Stop tomcat service
     service: name=tomcat state=stopped
 
   - name: Copy artifact to tomcat folder
@@ -36,4 +36,3 @@
 
   - name: Stop iptables
     service: name=iptables state=stopped
-
