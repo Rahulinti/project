@@ -14,11 +14,10 @@
   - name: Install tomcat
     yum: name=tomcat state=present
 
-<<<<<<< HEAD
-=======
+
   - name: Download latest gameoflife file
     get_url: url=http://54.201.173.200:9090/nexus/content/repositories/GOL_PROJ1/Dev/{{time}}/{{build}}/{{gol_version}} dest=/tmp/ mode=755
->>>>>>> 8d93224e2f1f4e64c9238773af3b51c38900a07f
+
 
   - name: Download latest gameoflife.war file
     get_url: url=http://54.201.173.200:9090/nexus/content/repositories/GOL_PROJ1/Dev/{{time}}/{{build}}/{{gol_version}} dest=/tmp/ mode=755
