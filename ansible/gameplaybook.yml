@@ -2,7 +2,6 @@
 - hosts: tomcatserver
   become: yes
 
-
   tasks:
 
   - name: Install EPEL-release
@@ -16,9 +15,8 @@
     yum: name=tomcat state=present
 
 
-  - name: Download latest gameoflife file
-    get_url: url=http://54.190.30.204:9090/nexus/content/repositories/{{group_id}}/{{time}}/{{build}}/{{gol_version}} dest=/tmp/ mode=755
-
+  - name: Download latest gameoflife.war file
+    get_url: url=http://54.202.56.217/nexus/content/repositories/game/{{group_id}}/{{time}}/{{build}}/{{gol_version}} dest=/tmp/ mode=755
 
   - name: Stop tomcat service
     service: name=tomcat state=stopped
@@ -38,3 +36,4 @@
 
   - name: Stop iptables
     service: name=iptables state=stopped
+
